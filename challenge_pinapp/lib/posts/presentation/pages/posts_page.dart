@@ -1,3 +1,4 @@
+import 'package:challenge_pinapp/core/presentation/widgets/list_item.dart';
 import 'package:challenge_pinapp/posts/presentation/controllers/posts_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -29,10 +30,11 @@ class _Posts extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       itemCount: controller.posts.length,
-      itemBuilder: (context, index) => ListTile(
-        title: Text(controller.posts[index].title),
-        subtitle: Text(controller.posts[index].body),
-        onTap: () => controller.goToComments(controller.posts[index].id),
+      itemBuilder: (context, index) => ListItem(
+        postId: controller.posts[index].id,
+        title: controller.posts[index].title,
+        body: controller.posts[index].body,
+        onTap: controller.goToComments,
       ),
     );
   }
