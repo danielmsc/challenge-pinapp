@@ -13,10 +13,11 @@ class DioClient {
     return Dio(options);
   }
 
-  Future<Response<dynamic>> get(String path) async {
+  Future<Response<dynamic>> get(String path,
+      {Map<String, dynamic>? params}) async {
     try {
       final dio = await _getDioClient();
-      return await dio.get(path);
+      return await dio.get(path, queryParameters: params);
     } on DioException catch (e) {
       throw ExceptionUtils.getExceptionType(e);
     }
