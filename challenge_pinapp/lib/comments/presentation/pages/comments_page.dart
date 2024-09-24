@@ -31,6 +31,7 @@ class _Comments extends StatelessWidget {
       shrinkWrap: true,
       itemCount: controller.comments.length,
       itemBuilder: (context, index) => ListItem(
+        index: index + 1,
         title: controller.comments[index].name,
         body: controller.comments[index].body,
         email: controller.comments[index].email,

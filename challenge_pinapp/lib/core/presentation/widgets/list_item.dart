@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 typedef PostCallback = Future<void> Function(int postId);
 
 class ListItem extends StatelessWidget {
+  final int index;
   final String title;
   final String body;
   final int? postId;
@@ -12,6 +13,7 @@ class ListItem extends StatelessWidget {
 
   const ListItem(
       {super.key,
+      required this.index,
       required this.title,
       required this.body,
       this.postId,
@@ -27,6 +29,10 @@ class ListItem extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              '#$index',
+              style: Styles.indexStyle(),
+            ),
             if (email != null) ...[
               Text(
                 email!,

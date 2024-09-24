@@ -31,6 +31,7 @@ class _Posts extends StatelessWidget {
       shrinkWrap: true,
       itemCount: controller.posts.length,
       itemBuilder: (context, index) => ListItem(
+        index: index + 1,
         postId: controller.posts[index].id,
         title: controller.posts[index].title,
         body: controller.posts[index].body,
