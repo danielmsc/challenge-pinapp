@@ -11,8 +11,10 @@ class PostsPage extends GetView<PostsController> {
       appBar: AppBar(
         title: Text('posts'.tr),
       ),
-      body: controller.obx((_) => _Posts(controller: controller),
-          onLoading: const Center(child: CircularProgressIndicator())),
+      body: controller.obx(
+        (_) => _Posts(controller: controller),
+        onLoading: const Center(child: CircularProgressIndicator()),
+      ),
     );
   }
 }
@@ -30,6 +32,7 @@ class _Posts extends StatelessWidget {
       itemBuilder: (context, index) => ListTile(
         title: Text(controller.posts[index].title),
         subtitle: Text(controller.posts[index].body),
+        onTap: () => controller.goToComments(controller.posts[index].id),
       ),
     );
   }

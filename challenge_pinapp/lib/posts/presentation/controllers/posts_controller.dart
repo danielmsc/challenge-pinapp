@@ -1,3 +1,4 @@
+import 'package:challenge_pinapp/core/presentation/routes.dart';
 import 'package:challenge_pinapp/posts/domain/entities/post.dart';
 import 'package:challenge_pinapp/posts/domain/use_cases/get_posts.dart';
 import 'package:get/get.dart';
@@ -20,5 +21,9 @@ class PostsController extends GetxController with StateMixin {
       posts = postList;
       change(null, status: RxStatus.success());
     });
+  }
+
+  Future<void> goToComments(int postId) async {
+    await Get.toNamed(Routes.commentsPage, arguments: {'postId': postId});
   }
 }

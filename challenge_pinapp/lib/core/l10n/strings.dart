@@ -11,6 +11,7 @@ class Strings extends Translations {
   Map<String, Map<String, String>> get keys => {
         'es_AR': {
           'posts': 'Posts',
+          'comments': 'Comentarios',
         },
       };
 }

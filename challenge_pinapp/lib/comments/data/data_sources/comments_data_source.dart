@@ -12,7 +12,9 @@ class CommentsDataSourceImpl extends CommentsDataSource {
 
   @override
   Future<List<CommentModel>> getComments(int postId) async {
-    final response = client.get('/comments', params: {'postId': postId});
-    return (response as List).map((e) => CommentModel.fromJson(e)).toList();
+    final response = await client.get('/comments', params: {'postId': postId});
+    return (response.data as List)
+        .map((e) => CommentModel.fromJson(e))
+        .toList();
   }
 }
