@@ -8,7 +8,9 @@ class PostsPage extends GetView<PostsController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text('posts'.tr),
+      ),
       body: controller.obx((_) => _Posts(controller: controller),
           onLoading: const Center(child: CircularProgressIndicator())),
     );
