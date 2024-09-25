@@ -18,6 +18,8 @@ void main() async {
   test('Should return a list of posts', () async {
     when(client.get(path)).thenAnswer(
       (_) async => Response(
+        requestOptions: RequestOptions(path: ''),
+        statusCode: 200,
         data: [
           {
             "userId": 1,
@@ -28,8 +30,6 @@ void main() async {
                 "quia et suscipit\nsuscipit recusandae consequuntur expedita et cum\nreprehenderit molestiae ut ut quas totam\nnostrum rerum est autem sunt rem eveniet architecto"
           },
         ],
-        statusCode: 200,
-        requestOptions: RequestOptions(path: ''),
       ),
     );
 
