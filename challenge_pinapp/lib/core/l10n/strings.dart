@@ -12,6 +12,8 @@ class Strings extends Translations {
         'es_AR': {
           'posts': 'Posts',
           'comments': 'Comentarios',
+          'errorLoadingContent': 'Ocurrió un error al cargar el contenido',
+          'retry': 'Reintentar',
         },
       };
 }

@@ -1,3 +1,4 @@
+import 'package:challenge_pinapp/core/presentation/widgets/content_error.dart';
 import 'package:challenge_pinapp/core/presentation/widgets/list_item.dart';
 import 'package:challenge_pinapp/posts/presentation/controllers/posts_controller.dart';
 import 'package:flutter/material.dart';
@@ -15,6 +16,9 @@ class PostsPage extends GetView<PostsController> {
       body: controller.obx(
         (_) => _Posts(controller: controller),
         onLoading: const Center(child: CircularProgressIndicator()),
+        onError: (_) => ContentError(
+          retryCallback: controller.getPosts,
+        ),
       ),
     );
   }

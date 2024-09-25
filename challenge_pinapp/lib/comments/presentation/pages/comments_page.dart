@@ -1,4 +1,5 @@
 import 'package:challenge_pinapp/comments/presentation/controllers/comments_controller.dart';
+import 'package:challenge_pinapp/core/presentation/widgets/content_error.dart';
 import 'package:challenge_pinapp/core/presentation/widgets/list_item.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -15,6 +16,9 @@ class CommentsPage extends GetView<CommentsController> {
       body: controller.obx(
         (_) => _Comments(controller: controller),
         onLoading: const Center(child: CircularProgressIndicator()),
+        onError: (_) => ContentError(
+          retryCallback: controller.getComments,
+        ),
       ),
     );
   }

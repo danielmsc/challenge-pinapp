@@ -17,8 +17,10 @@ class PostsController extends GetxController with StateMixin {
   }
 
   Future<void> getPosts() async {
+    change(null, status: RxStatus.loading());
     final result = await getPostsUseCase(NoParamsGetPosts());
-    result.fold((failure) => null, (postList) {
+    result.fold((failure) => change(null, status: RxStatus.error()),
+        (postList) {
       content.posts.value = postList;
       change(null, status: RxStatus.success());
     });

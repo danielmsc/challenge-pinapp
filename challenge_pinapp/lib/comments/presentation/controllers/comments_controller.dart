@@ -16,12 +16,14 @@ class CommentsController extends GetxController with StateMixin {
     super.onInit();
     content = Get.find<ContentController>();
     postId = Get.arguments['postId'];
-    await getComments(postId);
+    await getComments();
   }
 
-  Future<void> getComments(int postId) async {
+  Future<void> getComments() async {
+    change(null, status: RxStatus.loading());
     final result = await getCommentsUseCase(ParamsGetComments(postId: postId));
-    result.fold((failure) => null, (commentList) {
+    result.fold((failure) => change(null, status: RxStatus.error()),
+        (commentList) {
       comments = commentList;
       change(null, status: RxStatus.success());
     });
