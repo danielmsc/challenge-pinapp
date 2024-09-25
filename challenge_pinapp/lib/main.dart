@@ -1,4 +1,5 @@
 import 'package:challenge_pinapp/core/l10n/strings.dart';
+import 'package:challenge_pinapp/core/presentation/controllers/content_controller.dart';
 import 'package:challenge_pinapp/core/presentation/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -9,6 +10,7 @@ import 'core/data/network/dio_client.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   Get.put<DioClient>(DioClient(), permanent: true);
+  Get.put<ContentController>(ContentController(), permanent: true);
   runApp(const MyApp());
 }
 

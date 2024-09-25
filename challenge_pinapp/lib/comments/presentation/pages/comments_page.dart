@@ -27,15 +27,33 @@ class _Comments extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      shrinkWrap: true,
-      itemCount: controller.comments.length,
-      itemBuilder: (context, index) => ListItem(
-        index: index + 1,
-        title: controller.comments[index].name,
-        body: controller.comments[index].body,
-        email: controller.comments[index].email,
-      ),
+    return Column(
+      children: [
+        Obx(
+          () => ListItem(
+            color: Colors.white10,
+            postId: controller.content.posts[controller.postId - 1].id,
+            title: controller.content.posts[controller.postId - 1].title,
+            body: controller.content.posts[controller.postId - 1].body,
+            shouldShowLikeIcon: true,
+            liked: controller.content.posts[controller.postId - 1].liked,
+            likeCallback: controller.content.flipPostLike,
+          ),
+        ),
+        Expanded(
+          child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: controller.comments.length,
+            itemBuilder: (context, index) => ListItem(
+              color: Colors.white,
+              title: controller.comments[index].name,
+              body: controller.comments[index].body,
+              email: controller.comments[index].email,
+              shouldShowLikeIcon: false,
+            ),
+          ),
+        ),
+      ],
     );
   }
 }

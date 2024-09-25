@@ -1,17 +1,21 @@
 import 'package:challenge_pinapp/comments/domain/entities/comment.dart';
 import 'package:challenge_pinapp/comments/domain/use_cases/get_comments.dart';
+import 'package:challenge_pinapp/core/presentation/controllers/content_controller.dart';
 import 'package:get/get.dart';
 
 class CommentsController extends GetxController with StateMixin {
   final GetComments getCommentsUseCase;
   late List<Comment> comments;
+  late int postId;
+  late ContentController content;
 
   CommentsController({required this.getCommentsUseCase});
 
   @override
   void onInit() async {
     super.onInit();
-    final int postId = Get.arguments['postId'];
+    content = Get.find<ContentController>();
+    postId = Get.arguments['postId'];
     await getComments(postId);
   }
 

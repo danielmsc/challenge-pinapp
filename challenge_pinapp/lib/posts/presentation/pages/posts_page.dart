@@ -29,13 +29,17 @@ class _Posts extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       shrinkWrap: true,
-      itemCount: controller.posts.length,
-      itemBuilder: (context, index) => ListItem(
-        index: index + 1,
-        postId: controller.posts[index].id,
-        title: controller.posts[index].title,
-        body: controller.posts[index].body,
-        onTap: controller.goToComments,
+      itemCount: controller.content.posts.length,
+      itemBuilder: (context, index) => Obx(
+        () => ListItem(
+          color: Colors.white,
+          postId: controller.content.posts[index].id,
+          title: controller.content.posts[index].title,
+          body: controller.content.posts[index].body,
+          shouldShowLikeIcon: true,
+          liked: controller.content.posts[index].liked,
+          onTap: controller.goToComments,
+        ),
       ),
     );
   }

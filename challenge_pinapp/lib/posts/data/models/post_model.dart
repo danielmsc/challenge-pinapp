@@ -5,7 +5,8 @@ class PostModel extends Post {
       {required super.userId,
       required super.id,
       required super.title,
-      required super.body});
+      required super.body,
+      super.liked});
 
   factory PostModel.fromJson(Map<String, dynamic> json) => PostModel(
       userId: json['userId'],
