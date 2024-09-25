@@ -29,12 +29,12 @@ class ListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: color,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0.0),
-        child: GestureDetector(
-          onTap: onTap != null ? () => onTap!(postId!) : null,
+    return GestureDetector(
+      onTap: onTap != null ? () => onTap!(postId!) : null,
+      child: Container(
+        color: color,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(12.0, 12.0, 12.0, 0.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -53,7 +53,7 @@ class ListItem extends StatelessWidget {
                           ? () => likeCallback!(postId!)
                           : null,
                       child: Icon(
-                        size: 20.0,
+                        size: 24.0,
                         liked
                             ? Icons.thumb_up_alt
                             : Icons.thumb_up_alt_outlined,
