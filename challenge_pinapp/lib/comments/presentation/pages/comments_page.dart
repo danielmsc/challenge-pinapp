@@ -35,7 +35,7 @@ class _Comments extends StatelessWidget {
       children: [
         Obx(
           () => ListItem(
-            color: Colors.white10,
+            color: Colors.grey.shade200,
             postId: controller.content.posts[controller.postId - 1].id,
             title: controller.content.posts[controller.postId - 1].title,
             body: controller.content.posts[controller.postId - 1].body,
